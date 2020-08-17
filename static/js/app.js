@@ -3,11 +3,12 @@ var tableData = data;
 
 // YOUR CODE HERE!
 // get table references
+var table = d3.select("table");
 var tbody = d3.select("tbody");
 
 function buildTable(data) {
     // Clear out existing data
-    tbody.html(" ");
+    tbody.html("");
     // Loop through each object in the data and append a row and cells for each value in the row
     data.forEach((dataRow) => {
         // Append the row
