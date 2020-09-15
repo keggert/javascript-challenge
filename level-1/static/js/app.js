@@ -9,12 +9,12 @@ function buildTables(data) {
   tbody.html("");
 
   // Loop through every object in the data and append a row and cells for each value in that row
-  data.forEach((dataRow) => {
+  data.forEach((rowData) => {
     // We need to append a row to the table body with (tr)
     var row = tbody.append("tr");
 
     // Using object.values go through each fdataRow and add a value as a table cell of (td)
-    Object.values(dataRow).forEach((value) => {
+    Object.values(rowData).forEach((value) => {
       var cells = row.append("td");
         cells.text(value);
       }
@@ -39,7 +39,7 @@ function clickHandle() {
   }
 
   // Our table will be rebuilt using filterdata
-  buildTable(filterData);
+  buildTables(filterData);
 }
 
 // Attaching an event for the button
