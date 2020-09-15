@@ -1,48 +1,49 @@
-// from data.js file
+// From the data.js file we need to call in the data
 var tableData = data;
 
-// get the table references
+// Get tbody from table for table references
 var tbody = d3.select("tbody");
 
-function buildTable(data) {
-  // First, clear out any existing data with html("")
+function buildTables(data) {
+  // First, we need to clear out any existing data with html("")
   tbody.html("");
 
-  // Next, loop through each object in the data and append a row and cells for each value in that row
+  // Loop through every object in the data and append a row and cells for each value in that row
   data.forEach((dataRow) => {
-    // Append a row to the table body with (tr)
+    // We need to append a row to the table body with (tr)
     var row = tbody.append("tr");
 
-    // Loop through each field in the dataRow and add each value as a table cell of (td)
+    // Using object.values go through each fdataRow and add a value as a table cell of (td)
     Object.values(dataRow).forEach((value) => {
-      var cell = row.append("td");
-        cell.text(value);
+      var cells = row.append("td");
+        cells.text(value);
       }
     );
   });
 }
 
-function handleClick() {
+// Function to handle our click
+function clickHandle() {
 
-  // Prevent a refresh of our page
+  // Using preventDefault to prevent a refresh of the page
   d3.event.preventDefault();
 
-  // Grab the datetime value from the filter
+  // Need to grab our datetime value from our filter using #datetime
   var date = d3.select("#datetime").property("value");
-  let filteredData = tableData;
+  let filterData = tableData;
 
-  // Check to see if a date was entered and filter the data using that particular date.
+  // Has a date been entered and can we filter that particular date
   if (date) {
-    // Apply filter to the table data to only keep the rows where the datetime value matches the filter value
-    filteredData = filteredData.filter(row => row.datetime === date);
+    // Apply a filter to our table data to so that our datetime value matches the filtered value
+    filterData = filterData.filter(row => row.datetime === date);
   }
 
-  // Rebuild the table using filtered data
-  buildTable(filteredData);
+  // Our table will be rebuilt using filterdata
+  buildTable(filterData);
 }
 
-// Attach an event to listen for the form button
-d3.selectAll("#filter-btn").on("click", handleClick);
+// Attaching an event for the button
+d3.selectAll("#filter-btn").on("click", clickHandle);
 
-// Build the table when the page loads
-buildTable(tableData);
+// Finally, our table needs to be built when we load the data
+buildTables(tableData);
