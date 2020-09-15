@@ -4,7 +4,7 @@ var tableData = data;
 // Get tbody from table for table references
 var tbody = d3.select("tbody");
 
-function buildTables(data) {
+function buildTheTables(data) {
   // First, we need to clear out any existing data with html("")
   tbody.html("");
 
@@ -39,11 +39,11 @@ function clickHandle() {
   }
 
   // Our table will be rebuilt using filterdata
-  buildTables(filterData);
+  buildTheTables(filterData);
 }
 
 // Attaching an event for the button
 d3.selectAll("#filter-btn").on("click", clickHandle);
 
 // Finally, our table needs to be built when we load the data
-buildTables(tableData);
+buildTheTables(tableData);
