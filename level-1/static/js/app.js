@@ -13,7 +13,7 @@ function buildTheTables(data) {
     // We need to append a row to the table body with (tr)
     var row = tbody.append("tr");
 
-    // Using object.values go through each fdataRow and add a value as a table cell of (td)
+    // Using object.values go through each rowData and add a value as a table cell of (td)
     Object.values(rowData).forEach((value) => {
       var cells = row.append("td");
         cells.text(value);
